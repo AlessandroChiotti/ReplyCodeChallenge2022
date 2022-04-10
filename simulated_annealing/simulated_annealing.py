@@ -5,7 +5,7 @@ import random
 
 class SimulatedAnnealing:
     initial_state: State
-    initial_temp = 100
+    initial_temp = 1000
     # final_temp = 0.1
     alpha = 0.85
     N = 40
@@ -41,12 +41,11 @@ class SimulatedAnnealing:
                         optimal_solution = neighbor
                 # if the new solution is better than the global one, accept it
                 if optimal_solution.get_cost() > global_optimal_solution.get_cost():
+                    print(f"New optimal solution found")
                     global_optimal_solution = optimal_solution
 
             current_state = optimal_solution
-
             # decrement the temperature
             current_temp = self.alpha * current_temp
 
-        print(f"Global optimal solution: {global_optimal_solution}")
         return global_optimal_solution

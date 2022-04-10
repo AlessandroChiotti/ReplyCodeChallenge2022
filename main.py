@@ -22,12 +22,10 @@ output_file_path = f"{OUTPUT_FOLDER_PATH}/{output_file_name}"
 def main():
     input = Input(input_file_path)
     input.read()
-    print(input)
     Problem.init(input)
     initial_state = State(Problem.generate_initial_state())
-    print(initial_state)
     solution = SimulatedAnnealing(initial_state).run()
-    # print(f'Total reward: {Problem.compute_cost(solution)}')
+    print(f'Total reward: {solution.get_cost()}')
     output = Output(solution, output_file_path)
     output.write()
 

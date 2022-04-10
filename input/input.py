@@ -1,7 +1,9 @@
+from typing import List
+
 
 class Input:
     file_path = None
-    demons = list
+    demons: List[dict]
     max_stamina = None
     initial_stamina = None
     num_demons = None
@@ -16,12 +18,11 @@ class Input:
                 int, line.split(' '))
             self.demons = []
             for _ in range(self.num_demons):
-                stamina_required, turns_to_recover, recovered_stamina, turns_to_get_fragments, * \
+                required_stamina, turns_to_recover, recovered_stamina, turns_to_get_fragments, * \
                     fragments = infile.readline().strip().split(' ')
-                # print(len(fragments))
                 self.demons.append(
                     {
-                        "stamina_required": int(stamina_required),
+                        "required_stamina": int(required_stamina),
                         "turns_to_recover": int(turns_to_recover),
                         "recovered_stamina": int(recovered_stamina),
                         "total_fragments": int(turns_to_get_fragments),
